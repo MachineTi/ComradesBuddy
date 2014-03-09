@@ -1,0 +1,64 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>My Parse App</title>
+  <meta name="description" content="Comrades Buddy">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.17.min.js"></script>
+</head>
+
+<body>
+  
+  <div id="main">
+    <h1>You're ready to use Parse!</h1>
+
+    <p>Read the documentation and start building your JavaScript app:</p>
+
+    <ul>
+      <li><a href="https://www.parse.com/docs/js_guide">Parse JavaScript Guide</a></li>
+      <li><a href="https://www.parse.com/docs/js">Parse JavaScript API Documentation</a></li>
+    </ul>
+
+    
+  </div>
+
+  <script type="text/javascript">
+    Parse.initialize("rWk16Uc4hnsXDTC0Py97nP8YRaH2IPWeKAXwNpf7", "2E64GAbtCUusrnBFsLLZmSovYEs7TpHSNp8xQ3RM");
+    
+    window.fbAsyncInit = function() {
+      Parse.FacebookUtils.init({
+        appId      : '604403666313661', // Facebook App ID
+        channelUrl : '//http://www.comradesbuddy.com/channel.html', // Channel File
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow Parse to access the session
+        xfbml      : true  // parse XFBML
+      });
+     Parse.FacebookUtils.logIn(null, {
+        success: function(user) {
+            if (!user.existed()) {
+                alert("User signed up and logged in through Facebook!");
+            } else {
+                alert("User logged in through Facebook!");
+            }
+        },
+        error: function(user, error) {
+            alert("User cancelled the Facebook login or did not fully authorize.");
+        }
+    });
+};
+
+(function(d){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    ref.parentNode.insertBefore(js, ref);
+}(document));
+  </script>
+</body>
+
+</html>
